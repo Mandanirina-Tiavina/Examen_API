@@ -7,41 +7,51 @@
 	},
 	"item": [
 		{
-			"name": "Hello world",
-			"protocolProfileBehavior": {
-				"disabledSystemHeaders": {
-					"accept": true
-				}
-			},
+			"name": "GET /ping",
 			"request": {
 				"method": "GET",
-				"header": [
-					{
-						"key": "Accept",
-						"value": "text/plain",
-						"type": "text"
-					}
-				],
+				"header": [],
 				"url": {
 					"raw": "{{base_url}}/hello",
-					"host": [
-						"{{base_url}}"
-					],
-					"path": [
-						"hello"
+					"host": ["{{base_url}}"],
+					"path": ["hello"]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET /home",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/welcome?name=Ryan",
+					"host": ["{{base_url}}"],
+					"path": ["welcome"],
+					"query": [
+						{
+							"key": "name",
+							"value": "Ryan"
+						}
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "Welcome",
+			"name": "POST /posts",
 			"request": {
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"name\": \"Ryan\"}",
+					"raw": "[\n    {\"author\": \"JK R\", \"title\": \"Harry poter\", \"content\": \"magician history\", \"creation_datetime\": \"2006-12-12\"}\n]",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -49,13 +59,50 @@
 					}
 				},
 				"url": {
-					"raw": "{{base_url}}/welcome",
-					"host": [
-						"{{base_url}}"
-					],
-					"path": [
-						"welcome"
-					]
+					"raw": "{{base_url}}/posts",
+					"host": ["{{base_url}}"],
+					"path": ["posts"]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET /posts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/posts",
+					"host": ["{{base_url}}"],
+					"path": ["posts"]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT /posts",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\"author\": \"JK RO\", \"title\": \"Harry poter 2\", \"content\": \"the magician history continue\", \"creation_datetime\": \"2008-12-12\"}\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/posts",
+					"host": ["{{base_url}}"],
+					"path": ["posts"]
 				}
 			},
 			"response": []
